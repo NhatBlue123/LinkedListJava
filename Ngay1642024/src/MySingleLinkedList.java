@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class MySingleLinkedList {
 	Node head;
+	int count = 0;
 	Scanner sc = new Scanner(System.in);
 	public MySingleLinkedList() {
 		// TODO Auto-generated constructor stub
@@ -18,6 +19,7 @@ public class MySingleLinkedList {
 			System.out.println("Nhap phan tu thu " + (i + 1) + ": ");
 			x = sc.nextInt();
 			Node t = new Node(x);
+			count++;
 			if (head == null) {
 				head = cuoi = t;
 			} else {
@@ -144,16 +146,103 @@ public class MySingleLinkedList {
 			}
 		}
 	}
+	void xoaDau()
+	{
+		if(head == null)
+		{
+			System.out.println("Node rong khong xoa duoc");
+		}else {
+			head = head.next;
+		}
+	}
+	void xoaCuoi()
+	{
+		Node p = head;
+		if(head == null)
+		{
+			System.out.println("Node rong khong xoa duoc");
+		}
+		else {
+			while(p.next.next != null)
+			{
+				p = p.next;
+			}
+			p.next = null;
+		}
+	}
+	void xoaK(int k)
+	{
+		if(k < 1)
+		{
+			System.out.println("Khong xoa dc");
+		}
+		else if(k == 1)
+		{
+			head = head.next;
+		}
+		else {
+			Node p = head;
+			int vt = 1;
+			while(p != null && vt < k-1)
+			{
+				vt++;
+				p = p.next;
+			}
+			p.next = p.next.next;
+		}
+	}
+	// 3 2 8 5 4
+	// 4 5 8 2 3
+	void daoDS()
+	{
+		if(head == null)
+		{
+			System.out.println("Khong dao duoc");
+		}
+		else {
+			Node p = head;
+			Node t = null;
+			while(p != null)
+			{
+				Node q = p.next;
+				p.next = t;
+				t = p;
+				p = q;
+			}
+			head = t;	
+		}
+	}
+	void sapSep()
+	{
+		if(head == null)
+		{
+			System.out.println("Khong dao duoc");
+		}
+		else {
+			Node p = head;
+			while(p != null)
+			{
+				Node t = p.next;
+			    while(t != null)
+			    {
+			    	if(p.data < t.data)
+			    	{
+			    		int tmp = p.data;
+			    		p.data = t.data;
+			    		t.data = tmp;
+			    	}
+			    	t = t.next;
+			    }
+				p = p.next;
+			}
+		}
+	}
 	public static void main(String[] args) {
 		MySingleLinkedList link = new MySingleLinkedList();
 		link.nhap();
 		link.in();
-		link.inCuoi();
-		link.timX();
-		link.tbLe();
-		//link.themCuoi(10);
-		link.insert(4, 5);
-		link.in();
+	    link.sapSep();
+	    link.in();
 	}
 
 
