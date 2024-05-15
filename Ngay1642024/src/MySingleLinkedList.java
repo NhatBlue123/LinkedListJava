@@ -241,7 +241,7 @@ public class MySingleLinkedList {
 		MySingleLinkedList link = new MySingleLinkedList();
 		link.nhap();
 		link.in();
-	    link.sapSep();
+	    link.xoaCuoi();
 	    link.in();
 	}
 
